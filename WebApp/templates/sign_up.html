@@ -22,66 +22,67 @@
   <body>
 
 
-  <div class="d-lg-flex half">
-  <div class="bg order-1 order-md-2"
-       style="background-image: url('{% static 'login/images/yellow.jpg' %}'); background-size: cover; background-position: center; height: 100%;">
-  </div>
-  <div class="contents order-2 order-md-1" style="display: flex; justify-content: center; align-items: center; background: #fff; padding: 2rem;">
+<div class="d-flex align-items-center justify-content-center"
+     style="min-height: 100vh; background: linear-gradient(135deg, #fff8db 0%, #ffe082 55%, #ffca28 100%); padding: 2rem 1rem;">
 
-    <div class="container" style="max-width: 500px; width: 100%;">
-    <div class="row align-items-center justify-content-center">
-        <div class="col-md-7">
-            <div class="mb-4 text-center">
-                <h3 style="font-size: 1.75rem; font-weight: bold; color: #333;">Register</h3>
-            </div>
-            <form action="{% url 'save_sign_up' %}" method="post" name="registerForm" onsubmit="return password_validation()">
-                {% csrf_token %}
-
-                <div class="form-group first">
-                    <label for="username" style="display: block; margin-bottom: 0.5rem; color: #555;">Username</label>
-                    <input type="text" class="form-control" id="username" name="username"
-                           style="border: 1px solid #ccc; border-radius: 4px; padding: 0.75rem; font-size: 1rem; width: 100%;"
-                           placeholder="Enter your username" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="email" style="display: block; margin-bottom: 0.5rem; color: #555;">Email</label>
-                    <input type="email" class="form-control" id="email" name="email"
-                           style="border: 1px solid #ccc; border-radius: 4px; padding: 0.75rem; font-size: 1rem; width: 100%;"
-                           placeholder="Enter your Email" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="password" style="display: block; margin-bottom: 0.5rem; color: #555;">Password</label>
-                    <input type="password" class="form-control" id="password" name="password"
-                           style="border: 1px solid #ccc; border-radius: 4px; padding: 0.75rem; font-size: 1rem; width: 100%;"
-                           placeholder="Enter your password" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="confirm_password" style="display: block; margin-bottom: 0.5rem; color: #555;">Confirm Password</label>
-                    <input type="password" class="form-control" id="confirm_password" name="password1"
-                           style="border: 1px solid #ccc; border-radius: 4px; padding: 0.75rem; font-size: 1rem; width: 100%;"
-                           placeholder="Confirm your password" required>
-                </div>
-
-                <input type="submit" value="Register" class="btn btn-block btn-primary"
-                       style="border: none; border-radius: 4px; padding: 0.75rem 1rem; font-size: 1rem; background: orange; color: #fff; cursor: pointer; transition: background 0.3s ease;">
-
-                <span class="d-block text-center my-4 text-muted" style="color: #6c757d;">&mdash; or &mdash;</span>
-
-                <div class="social-login">
-                    <a href="{% url 'sign_in' %}" class="btn btn-secondary btn-block"
-                       style="border: none; border-radius: 4px; padding: 0.75rem 1rem; font-size: 1rem; background: orange; color: #fff; display: inline-block; text-align: center; width: 100%; transition: background 0.3s ease; text-decoration: none;">
-                        Sign In
-                    </a>
-                </div>
-            </form>
-        </div>
+  <div style="width: 100%; max-width: 560px; background: rgba(255,255,255,0.97); border: 1px solid #ffd54f; border-radius: 24px; padding: 2.5rem 2rem; box-shadow: 0 18px 45px rgba(255, 179, 0, 0.18);">
+    <div class="mb-4 text-center">
+      <p style="margin-bottom: 8px; color: #ff9800; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;">Create Account</p>
+      <h3 style="font-size: 2rem; font-weight: 800; color: #4e342e; margin-bottom: 0.5rem;">Register</h3>
+      <p style="margin: 0; color: #8d6e63; font-size: 0.98rem;">Join the gadget store with a clean yellow-themed signup page.</p>
     </div>
-</div>
+
+    <form action="{% url 'save_sign_up' %}" method="post" name="registerForm" onsubmit="return password_validation()">
+      {% csrf_token %}
+
+      <div class="form-group first" style="margin-bottom: 1.1rem;">
+        <label for="username" style="display: block; margin-bottom: 0.5rem; color: #6d4c41; font-weight: 600;">Username</label>
+        <input type="text" class="form-control" id="username" name="username"
+               placeholder="Enter your username"
+               required
+               style="border: 1px solid #ffcc80; border-radius: 12px; padding: 0.9rem 1rem; font-size: 1rem; width: 100%; background: #fffdf4; color: #5d4037; box-shadow: none;">
+      </div>
+
+      <div class="form-group" style="margin-bottom: 1.1rem;">
+        <label for="email" style="display: block; margin-bottom: 0.5rem; color: #6d4c41; font-weight: 600;">Email</label>
+        <input type="email" class="form-control" id="email" name="email"
+               placeholder="Enter your email"
+               required
+               style="border: 1px solid #ffcc80; border-radius: 12px; padding: 0.9rem 1rem; font-size: 1rem; width: 100%; background: #fffdf4; color: #5d4037; box-shadow: none;">
+      </div>
+
+      <div class="form-group" style="margin-bottom: 1.1rem;">
+        <label for="password" style="display: block; margin-bottom: 0.5rem; color: #6d4c41; font-weight: 600;">Password</label>
+        <input type="password" class="form-control" id="password" name="password"
+               placeholder="Enter your password"
+               required
+               style="border: 1px solid #ffcc80; border-radius: 12px; padding: 0.9rem 1rem; font-size: 1rem; width: 100%; background: #fffdf4; color: #5d4037; box-shadow: none;">
+      </div>
+
+      <div class="form-group" style="margin-bottom: 1.4rem;">
+        <label for="confirm_password" style="display: block; margin-bottom: 0.5rem; color: #6d4c41; font-weight: 600;">Confirm Password</label>
+        <input type="password" class="form-control" id="confirm_password" name="password1"
+               placeholder="Confirm your password"
+               required
+               style="border: 1px solid #ffcc80; border-radius: 12px; padding: 0.9rem 1rem; font-size: 1rem; width: 100%; background: #fffdf4; color: #5d4037; box-shadow: none;">
+      </div>
+
+      <input type="submit" value="Register" class="btn btn-block"
+             style="border: none; border-radius: 12px; padding: 0.9rem 1rem; font-size: 1rem; font-weight: 700; background: linear-gradient(90deg, #ffb300 0%, #fb8c00 100%); color: #fff; cursor: pointer; transition: background 0.3s ease; width: 100%;">
+
+      <span class="d-block text-center my-4 text-muted"
+            style="color: #a1887f; margin: 1.5rem 0; font-weight: 500;">&mdash; or &mdash;</span>
+
+      <div class="social-login">
+        <a href="{% url 'sign_in' %}" class="btn btn-secondary btn-block"
+           style="border: 1px solid #ffd54f; border-radius: 12px; padding: 0.9rem 1rem; font-size: 1rem; font-weight: 700; background: #fff3cd; color: #e65100; display: inline-block; text-align: center; width: 100%; transition: background 0.3s ease; text-decoration: none;">
+          Already have an account? Sign In
+        </a>
+      </div>
+    </form>
   </div>
 </div>
+
 
 
 
