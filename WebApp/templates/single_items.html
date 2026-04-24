@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <title>lighten</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+
+      <link rel="stylesheet" href="{% static 'web/css/bootstrap.min.css' %}">
+      <link rel="stylesheet" href="{% static 'web/css/style.css' %}">
+      <link rel="stylesheet" href="{% static 'web/css/responsive.css' %}">
+      <link rel="icon" href="{% static 'web/images/fevicon.png' %}" type="image/gif" />
+      <link rel="stylesheet" href="{% static 'web/css/jquery.mCustomScrollbar.min.css' %}">
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+
+      <style>
+         .recommendation-section {
+            padding: 20px 0 10px;
+         }
+
+         .recommendation-card {
+            background: #fff;
+            border: 1px solid #ececec;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            padding: 18px;
+            margin-bottom: 30px;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+         }
+
+         .recommendation-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.1);
+         }
+
+         .recommendation-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 14px;
+            margin-bottom: 15px;
+            background: #f6f6f6;
+         }
+
+         .recommendation-card h3 {
+            font-size: 22px;
+            line-height: 1.3;
+            margin-bottom: 10px;
+            color: #0b1f33;
+         }
+
+         .recommendation-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 14px;
+            flex-grow: 1;
+         }
+
+         .recommendation-price {
+            font-size: 22px;
+            font-weight: 700;
+            color: #f7941d;
+            margin-bottom: 14px;
+         }
+
+         .recommendation-link {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            background: #000;
+            color: #fff;
+            padding: 12px 18px;
+            border-radius: 999px;
+            text-transform: uppercase;
+            font-weight: 600;
+            text-decoration: none;
+         }
+
+         .recommendation-link:hover {
+            background: #f7941d;
+            color: #fff;
+         }
+      </style>
+   </head>
+
+   <body class="main-layout">
+      <header>
+         <div class="header">
+            <div class="head_top">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="top-box">
+                           <ul class="sociel_link">
+                              <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="top-box">
+                           <p>long established fact that a reader will be</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="container">
+               <div class="row">
+                  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                     <div class="full">
+                        <div class="center-desk">
+                           <div class="logo">
+                              <a href="index.html"><img src="{% static 'web/images/logo.jpg' %}" alt="logo" /></a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="row align-items-center" style="margin-left:610px; margin-top:-70px">
+                     <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                        <div class="menu-area">
+                           <div class="limit-box">
+                              <nav class="main-menu">
+                                 <ul class="menu-area-main d-flex align-items-center" style="gap: 15px; list-style: none; padding: 0; margin: 0;">
+                                    <li><a href="{% url 'home_page' %}">Home</a></li>
+                                    <li><a href="{% url 'about_page' %}">About</a></li>
+                                    <li>
+                                       <a href="#">Categories</a>
+                                       <ul class="sub-menu">
+                                          {% for i in categories %}
+                                          <li><a href="{% url 'filtered_page' cat_name=i.Category_Name %}">{{ i.Category_Name }}</a></li>
+                                          {% endfor %}
+                                       </ul>
+                                    </li>
+                                    <li><a href="{% url 'product_page' %}">Product</a></li>
+                                    <li class="current-list-item">
+                                       <a href="{% url 'cart_page' %}" style="display: flex; align-items: center; gap: 5px;">
+                                          Cart
+                                          <span style="background: red; color: white; padding: 5px 10px; border-radius: 50%; font-size: 14px; font-weight: bold; display: flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; line-height: 1;">
+                                             {{ x }}
+                                          </span>
+                                       </a>
+                                    </li>
+                                    <li><a href="{% url 'contact_page' %}">Contact</a></li>
+                                 </ul>
+                              </nav>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 text-end">
+                        {% if request.session.Username %}
+                        <div style="display: flex; align-items: center;">
+                           <a class="buy" href="{% url 'sign_in' %}" style="padding: 4px 8px; font-size: 14px; color: white; text-decoration: none; border-radius: 4px; margin-right: 5px;">
+                              {{ request.session.Username }}
+                           </a>
+                           <a class="buy" href="{% url 'user_logout' %}" style="padding: 4px 8px; font-size: 14px; color: white; text-decoration: none; border-radius: 4px;">
+                              Logout
+                           </a>
+                        </div>
+                        {% else %}
+                        <a class="buy" href="{% url 'sign_up' %}" style="padding: 4px 8px; font-size: 14px; color: white; text-decoration: none; border-radius: 4px;">Sign Up</a>
+                        {% endif %}
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </header>
+
+      <div class="brand_color">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Product</h2>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="about">
+         <div class="container">
+            <div class="row">
+               <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                  <div class="about_box">
+                     <figure>
+                        <img src="{{ product.Product_image.url }}" style="width: 500px; height: 500px; object-fit: cover;" />
+                     </figure>
+                  </div>
+               </div>
+
+               <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                  <div class="about_box">
+                     <h3>{{ product.Product_name }}</h3>
+                     <h4 class="single-product-pricing">Rs.{{ product.Price }}</h4>
+                     <p>{{ product.Description }}</p>
+
+                     <form method="POST" id="fruitkha-contact" onsubmit="return valid_datas(this);" action="{% url 'save_cart' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <p style="display: flex; gap: 10px; justify-content: space-between; max-width: 400px;">
+                           <input type="number" name="quantity" id="quantity" min="1" placeholder="Number of items"
+                              style="flex: 1; height: 40px; padding: 0 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; font-size: 16px;">
+                           <input type="text" placeholder="Total price" id="total" name="total"
+                              style="flex: 2; height: 40px; padding: 0 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; font-size: 16px;" readonly>
+                        </p>
+
+                        <p>
+                           <input type="hidden" name="Productname" id="Productname" value="{{ product.Product_name }}">
+                           <input type="hidden" name="Price" id="price" value="{{ product.Price }}">
+                           <input type="hidden" name="Username" id="username" value="{{ request.session.Username }}">
+                        </p>
+
+                        <input type="hidden" name="token" value="FsWga4&amp;@f6aw">
+
+                        <p>
+                           <input type="submit" value="Add to cart"
+                              style="width: 100%; max-width: 400px; height: 40px; margin-bottom: 10px; padding: 0 10px; box-sizing: border-box; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; color: black; background-color: orange;">
+                        </p>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="about recommendation-section">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Customers Also Viewed</h2>
+                     <p>Simple collaborative filtering powered by Pandas and Scikit-learn.</p>
+                  </div>
+               </div>
+            </div>
+
+            <div class="row">
+               {% for item in recommended_products %}
+               <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                  <div class="recommendation-card">
+                     {% if item.Product_image %}
+                     <a href="{% url 'single_items' item_id=item.id %}">
+                        <img src="{{ item.Product_image.url }}" alt="{{ item.Product_name }}" class="recommendation-image">
+                     </a>
+                     {% endif %}
+                     <h3>{{ item.Product_name }}</h3>
+                     <p class="recommendation-description">{{ item.Description }}</p>
+                     <p class="recommendation-price">Rs.{{ item.Price }}</p>
+                     <a href="{% url 'single_items' item_id=item.id %}" class="recommendation-link">View Product</a>
+                  </div>
+               </div>
+               {% empty %}
+               <div class="col-md-12">
+                  <p>Recommendations will improve as more visitors browse products.</p>
+               </div>
+               {% endfor %}
+            </div>
+         </div>
+      </div>
+
+      <div class="whyschose">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-7 offset-md-3">
+                  <div class="title">
+                     <h2>Why <strong class="black">choose us</strong></h2>
+                     <span>Fastest repair service with best price!</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="choose_bg">
+         <div class="container">
+            <div class="white_bg">
+               <div class="row">
+                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                     <div class="for_box">
+                        <i><img src="{% static 'web/icon/1.png' %}" /></i>
+                        <h3>Data recovery</h3>
+                        <p>Perspiciatis eos quos totam cum minima autPerspiciatis eos quos</p>
+                     </div>
+                  </div>
+                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                     <div class="for_box">
+                        <i><img src="{% static 'web/icon/2.png' %}" /></i>
+                        <h3>Computer repair</h3>
+                        <p>Perspiciatis eos quos totam cum minima autPerspiciatis eos quos</p>
+                     </div>
+                  </div>
+                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                     <div class="for_box">
+                        <i><img src="{% static 'web/icon/3.png' %}" /></i>
+                        <h3>Mobile service</h3>
+                        <p>Perspiciatis eos quos totam cum minima autPerspiciatis eos quos</p>
+                     </div>
+                  </div>
+                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                     <div class="for_box">
+                        <i><img src="{% static 'web/icon/4.png' %}" /></i>
+                        <h3>Network solutions</h3>
+                        <p>Perspiciatis eos quos totam cum minima autPerspiciatis eos quos</p>
+                     </div>
+                  </div>
+                  <div class="col-md-12">
+                     <a class="read-more">Read More</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="service">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-8 offset-md-2">
+                  <div class="title">
+                     <h2>service <strong class="black">proces</strong></h2>
+                     <span>Easy and effective way to get your device repaired.</span>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                  <div class="service-box">
+                     <i><img src="{% static 'web/icon/service1.png' %}" /></i>
+                     <h3>Fast service</h3>
+                     <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea</p>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                  <div class="service-box">
+                     <i><img src="{% static 'web/icon/service2.png' %}" /></i>
+                     <h3>Secure payments</h3>
+                     <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea</p>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                  <div class="service-box">
+                     <i><img src="{% static 'web/icon/service3.png' %}" /></i>
+                     <h3>Expert team</h3>
+                     <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea</p>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                  <div class="service-box">
+                     <i><img src="{% static 'web/icon/service4.png' %}" /></i>
+                     <h3>Affordable services</h3>
+                     <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea</p>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                  <div class="service-box">
+                     <i><img src="{% static 'web/icon/service5.png' %}" /></i>
+                     <h3>90 Days warranty</h3>
+                     <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea</p>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                  <div class="service-box">
+                     <i><img src="{% static 'web/icon/service6.png' %}" /></i>
+                     <h3>Award winning</h3>
+                     <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <footer>
+         <div class="footer">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-6 offset-md-3">
+                     <ul class="sociel">
+                        <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                     </ul>
+                  </div>
+               </div>
+
+               <div class="row">
+                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                     <div class="contact">
+                        <h3>conatct us</h3>
+                        <span>Kochi,Kerala<br>+9187 6541 3210</span>
+                     </div>
+                  </div>
+
+                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                     <div class="contact">
+                        <h3>ADDITIONAL LINKS</h3>
+                        <ul class="lik">
+                           <li><a href="{% url 'about_page' %}">About us</a></li>
+                           <li><a href="#">Terms and conditions</a></li>
+                           <li><a href="#">Privacy policy</a></li>
+                           <li><a href="#">News</a></li>
+                           <li><a href="{% url 'contact_page' %}">Contact us</a></li>
+                        </ul>
+                     </div>
+                  </div>
+
+                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                     <div class="contact">
+                        <h3>service</h3>
+                        <ul class="lik">
+                           <li><a href="#">Data recovery</a></li>
+                           <li><a href="#">Computer repair</a></li>
+                           <li><a href="#">Mobile service</a></li>
+                           <li><a href="#">Network solutions</a></li>
+                           <li><a href="#">Technical support</a></li>
+                        </ul>
+                     </div>
+                  </div>
+
+                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                     <div class="contact">
+                        <h3>About lighten</h3>
+                        <span>At <strong>Lighten</strong>, we believe technology has the power to transform lives. We are dedicated to providing cutting-edge gadgets and exceptional service to bring you closer to the future. From smart devices to lifestyle innovations, Lighten is your go-to destination for all things tech.</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="copyright">
+               <p>Copyright 2025 All Right Reserved By <a href="">lignten technologies</a></p>
+            </div>
+         </div>
+      </footer>
+
+      <script src="{% static 'web/js/jquery.min.js' %}"></script>
+      <script src="{% static 'web/js/popper.min.js' %}"></script>
+      <script src="{% static 'web/js/bootstrap.bundle.min.js' %}"></script>
+      <script src="{% static 'web/js/jquery-3.0.0.min.js' %}"></script>
+      <script src="{% static 'web/js/plugin.js' %}"></script>
+      <script src="{% static 'web/js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+      <script src="{% static 'web/js/custom.js' %}"></script>
+
+      <script>
+         $(document).ready(function () {
+            $("#quantity").change(function () {
+               var x = document.getElementById("quantity").value;
+               var y = document.getElementById("price").value;
+               var result = x * y;
+               document.getElementById("total").value = result;
+            });
+         });
+      </script>
+   </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{%extends 'index.html'%}
+{%block content%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <style>
+        /* Ensure the table container takes full width */
+        .table-container {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Ensure images fit well in table cells */
+        .table img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        /* Table customization for better full-screen view */
+        .table th, .table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        /* Adjust card to full width */
+        .card {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+                <div class="card-body">
+                  <h1 class="card-title">Product Details</h1>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th>Phone</th>
+                          <th>Message</th>
+                          <th>Delete</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for i in data%}
+                        <tr>
+                          <td>{{i.Name}}</td>
+                          <td>{{i.Email}}</td>
+                          <td>{{i.Phone}}</td>
+                          <td>{{i.Message}}</td>
+                            <td>
+                                <a href="{% url 'delete_contact' con_id=i.id %}">
+                                    <button class="btn btn-outline-danger">Delete</button>
+                                </a>
+                            </td>
+                        </tr>
+                      {%endfor%}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+</body>
+</html>
+{%endblock%}

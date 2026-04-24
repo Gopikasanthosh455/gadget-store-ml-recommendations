@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>lighten</title>
+     <style>
+    /* Navbar Background */
+    .top-header-area {
+    background-color: #2C3E50 !important; /* Change this to your desired color */
+    padding: 15px 0;
+    transition: background-color 0.3s ease-in-out;
+}
+
+    /* Navbar Links */
+    .main-menu ul li a {
+        color: black !important; /* Ensure text is white */
+        font-weight: bold;
+        transition: color 0.3s;
+    }
+
+    .main-menu ul li a:hover {
+        color: #FFD700 !important; /* Gold color on hover */
+    }
+
+    /* Submenu Styling (Fixing White Background Issue) */
+    .main-menu ul li ul.sub-menu {
+        background-color: #ffffff; /* Set a visible background color */
+        border: 1px solid #ddd; /* Add a light border */
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Add shadow */
+        padding: 10px 0;
+    }
+
+    /* Submenu Links */
+    .main-menu ul li ul.sub-menu li a {
+        color: #333 !important; /* Change text color to dark */
+        padding: 10px 20px;
+        display: block;
+        transition: background 0.3s, color 0.3s;
+    }
+
+    /* Submenu Hover Effect */
+    .main-menu ul li ul.sub-menu li a:hover {
+        background-color:orange !important; /* Change background on hover */
+        color: white !important; /* White text on hover */
+    }
+</style>
+
+
+<style>
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+        .payment-container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 400px;
+        }
+        .payment-container h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .payment-container label {
+            font-size: 16px;
+            font-weight: bold;
+            display: block;
+            text-align: left;
+            margin-top: 10px;
+        }
+        .payment-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .payment-button {
+            width: 100%;
+            padding: 12px;
+            background:orange;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+        .payment-button:hover {
+            background: orange;
+        }
+    </style>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="{% static 'web/css/bootstrap.min.css' %}">
+      <!-- style css -->
+      <link rel="stylesheet" href="{% static 'web/css/style.css' %}">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="{% static 'web/css/responsive.css' %}">
+      <!-- fevicon -->
+      <link rel="icon" href="{% static 'web/images/fevicon.png" type="image/gif' %}" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="{% static 'web/css/jquery.mCustomScrollbar.min.css' %}">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+   </head>
+   <!-- body -->
+   <body class="main-layout">
+      <!-- loader  -->
+<!--      <div class="loader_bg">-->
+<!--         <div class="loader"><img src="{% static 'web/images/loading.gif' %}" alt="#" /></div>-->
+<!--      </div>-->
+      <!-- end loader -->
+      <!-- header -->
+      <header>
+         <!-- header inner -->
+         <div class="header">
+            <div class="head_top">
+               <div class="container">
+                  <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                       <div class="top-box">
+                        <ul class="sociel_link">
+                         <li> <a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                         <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
+                         <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
+                         <li> <a href="#"><i class="fa fa-linkedin"></i></a></li>
+                     </ul>
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12" >
+                       <div class="top-box">
+                        <p>long established fact that a reader will be </p>
+                    </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="container">
+            <div class="row">
+               <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                  <div class="full">
+                     <div class="center-desk">
+                        <div class="logo"> <a href="index.html"><img src="{% static 'web/images/logo.jpg' %}" alt="logo"/></a> </div>
+                     </div>
+                  </div>
+               </div>
+   <div class="row align-items-center" style="margin-left:610px; margin-top:-70px">
+   <!-- Menu Section -->
+   <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+      <div class="menu-area">
+         <div class="limit-box">
+            <nav class="main-menu">
+               <ul class="menu-area-main d-flex align-items-center" style="gap: 15px; list-style: none; padding: 0; margin: 0;">
+                  <li><a href="{% url 'home_page' %}">Home</a></li>
+                  <li><a href="{% url 'about_page' %}">About</a></li>
+                <li class="dropdown active" style="position: relative;">
+                                 <li><a href="#">Categories</a>
+									<ul class="sub-menu">
+											{%for i in categories %}
+											<li><a href="{% url 'filtered_page' cat_name=i.Category_Name%}">{{i.Category_Name}}</a><li>
+											{%endfor%}
+									</ul>
+								</li>
+
+                  <li><a href="{% url 'product_page' %}">Product</a></li>
+                    <li class="current-list-item">
+    <a href="{% url 'cart_page'%}" style="display: flex; align-items: center; gap: 5px;">
+        Cart
+        <span style="background: red; color: white; padding: 5px 10px; border-radius: 50%;
+                     font-size: 14px; font-weight: bold; display: flex; align-items: center;
+                     justify-content: center; min-width: 24px; height: 24px; line-height: 1;">
+            {{ x }}
+        </span>
+    </a>
+</li>
+                  <li><a href="{% url 'contact_page' %}">Contact</a></li>
+               </ul>
+            </nav>
+         </div>
+      </div>
+   </div>
+
+   <!-- Button Section -->
+   <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 text-end">
+       {%if request.session.Username%}
+      <div style="display: flex; align-items: center;">
+    <a class="buy" href="{% url 'sign_in' %}"
+       style="padding: 4px 8px; font-size: 14px; color: white; text-decoration: none; border-radius: 4px; margin-right: 5px;">
+        {{ request.session.Username }}
+    </a>
+    <a class="buy" href="{% url 'user_logout' %}"
+       style="padding: 4px 8px; font-size: 14px; color: white; text-decoration: none; border-radius: 4px;">
+        Logout
+    </a>
+</div>
+
+       {%else%}
+      <a class="buy" href="{% url 'sign_up' %}" style="padding: 4px 8px; font-size: 14px;  color: white; text-decoration: none; border-radius: 4px;">Sign Up</a>
+       {%endif%}
+   </div>
+</div>
+         </div>
+         <!-- end header inner -->
+      </header>
+      <!-- end header -->
+       <div class="brand_color">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage">
+                        <h2>Proceed to Pay </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+<!-- Payment Section -->
+<div class="wrapper">
+    <div class="payment-container"  style="margin-top:10px;">
+        <h2>Proceed to Pay</h2>
+
+        <!-- Payment Form -->
+        <form action="#" method="POST">
+            {% csrf_token %}
+
+            <label for="username">User Name</label>
+            <input type="text" id="username" name="username" value="{{ request.session.Username }}" required>
+           <label for="username">Total Amount</label>
+            <input type="text" name="username" value="{{total_amount}}" required>
+            <button type="submit" class="payment-button">Pay Now</button>
+        </form>
+    </div>
+</div>
+
+      <!--  footer -->
+    <footer>
+         <div class="footer">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-6 offset-md-3">
+                     <ul class="sociel">
+                         <li> <a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                         <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
+                         <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
+                         <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
+                     </ul>
+                  </div>
+            </div>
+            <div class="row">
+               <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                  <div class="contact">
+                     <h3>conatct us</h3>
+                     <span>Kochi,Kerala<br>
+                        +9187 6541 3210</span>
+                  </div>
+               </div>
+                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                  <div class="contact">
+                     <h3>ADDITIONAL LINKS</h3>
+                     <ul class="lik">
+                         <li> <a href="{%url 'about_page'%}">About us</a></li>
+                         <li> <a href="#">Terms and conditions</a></li>
+                         <li> <a href="#">Privacy policy</a></li>
+                         <li> <a href="#">News</a></li>
+                          <li> <a href="{%url 'contact_page'%}">Contact us</a></li>
+                     </ul>
+                  </div>
+               </div>
+                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                  <div class="contact">
+                     <h3>service</h3>
+                      <ul class="lik">
+                    <li> <a href="#"> Data recovery</a></li>
+                         <li> <a href="#">Computer repair</a></li>
+                         <li> <a href="#">Mobile service</a></li>
+                         <li> <a href="#">Network solutions</a></li>
+                          <li> <a href="#">Technical support</a></li>
+                  </div>
+               </div>
+                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                  <div class="contact">
+                     <h3>About lighten</h3>
+                     <span> At <strong>Lighten</strong>, we believe technology has the power to transform lives. We are dedicated to providing cutting-edge gadgets and exceptional service to bring you closer to the future. From smart devices to lifestyle innovations, Lighten is your go-to destination for all things tech. </span>
+                  </div>
+               </div>
+            </div>
+         </div>
+            <div class="copyright">
+               <p>Copyright 2025 All Right Reserved By <a href="">lignten technologies</a></p>
+            </div>
+
+      </div>
+      </footer>
+      <!-- end footer -->
+      <!-- Javascript files-->
+      <script src="{% static 'web/js/jquery.min.js' %}"></script>
+      <script src="{% static 'web/js/popper.min.js' %}"></script>
+      <script src="{% static 'web/js/bootstrap.bundle.min.js' %}"></script>
+      <script src="{% static 'web/js/jquery-3.0.0.min.js' %}"></script>
+      <script src="{% static 'web/js/plugin.js' %}"></script>
+      <!-- sidebar -->
+      <script src="{% static 'web/js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+      <script src="{% static 'web/js/custom.js' %}"></script>
+      <script src="{% static 'web/https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js' %}"></script>
+      <script>
+         $(document).ready(function(){
+         $(".fancybox").fancybox({
+         openEffect: "none",
+         closeEffect: "none"
+         });
+
+         $(".zoom").hover(function(){
+
+         $(this).addClass('transition');
+         }, function(){
+
+         $(this).removeClass('transition');
+         });
+         });
+
+      </script>
+    <script>
+        $(document).ready(function(){
+            $("#quantity").change(function(){
+                x=document.getElementById("quantity").value;
+                y=document.getElementById("price").value;
+                result=x*y
+                document.getElementById("total").value=result;
+            })
+        })
+    </script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"
+    data-key="rzp_test_yqWJ0dcaHSFLZP"
+    data-amount="{{pay_str}}"
+    data-currency="INR"
+    data-order_id="{{payment.order_id}}"
+    data-buttontext=""
+    data-name="Gadgetstore"
+    data-description="Your description"
+    data-image=""
+    data-prefill.name="abc"
+    data-prefill.email="abc@gmail.com"
+    data-theme.color="#ad6609"
+>
+
+</script>
+   </body>
+</html>

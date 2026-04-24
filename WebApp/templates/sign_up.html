@@ -1,0 +1,144 @@
+<!doctype html>
+{% load static%}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'login/fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'login/css/owl.carousel.min.css' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'login/css/bootstrap.min.css' %}">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="{% static 'login/css/style.css' %}">
+
+    <title>Login #6</title>
+  </head>
+  <body>
+
+
+  <div class="d-lg-flex half">
+  <div class="bg order-1 order-md-2"
+       style="background-image: url('{% static 'login/images/yellow.jpg' %}'); background-size: cover; background-position: center; height: 100%;">
+  </div>
+  <div class="contents order-2 order-md-1" style="display: flex; justify-content: center; align-items: center; background: #fff; padding: 2rem;">
+
+    <div class="container" style="max-width: 500px; width: 100%;">
+    <div class="row align-items-center justify-content-center">
+        <div class="col-md-7">
+            <div class="mb-4 text-center">
+                <h3 style="font-size: 1.75rem; font-weight: bold; color: #333;">Register</h3>
+            </div>
+            <form action="{% url 'save_sign_up' %}" method="post" name="registerForm" onsubmit="return password_validation()">
+                {% csrf_token %}
+
+                <div class="form-group first">
+                    <label for="username" style="display: block; margin-bottom: 0.5rem; color: #555;">Username</label>
+                    <input type="text" class="form-control" id="username" name="username"
+                           style="border: 1px solid #ccc; border-radius: 4px; padding: 0.75rem; font-size: 1rem; width: 100%;"
+                           placeholder="Enter your username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" style="display: block; margin-bottom: 0.5rem; color: #555;">Email</label>
+                    <input type="email" class="form-control" id="email" name="email"
+                           style="border: 1px solid #ccc; border-radius: 4px; padding: 0.75rem; font-size: 1rem; width: 100%;"
+                           placeholder="Enter your Email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" style="display: block; margin-bottom: 0.5rem; color: #555;">Password</label>
+                    <input type="password" class="form-control" id="password" name="password"
+                           style="border: 1px solid #ccc; border-radius: 4px; padding: 0.75rem; font-size: 1rem; width: 100%;"
+                           placeholder="Enter your password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm_password" style="display: block; margin-bottom: 0.5rem; color: #555;">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirm_password" name="password1"
+                           style="border: 1px solid #ccc; border-radius: 4px; padding: 0.75rem; font-size: 1rem; width: 100%;"
+                           placeholder="Confirm your password" required>
+                </div>
+
+                <input type="submit" value="Register" class="btn btn-block btn-primary"
+                       style="border: none; border-radius: 4px; padding: 0.75rem 1rem; font-size: 1rem; background: orange; color: #fff; cursor: pointer; transition: background 0.3s ease;">
+
+                <span class="d-block text-center my-4 text-muted" style="color: #6c757d;">&mdash; or &mdash;</span>
+
+                <div class="social-login">
+                    <a href="{% url 'sign_in' %}" class="btn btn-secondary btn-block"
+                       style="border: none; border-radius: 4px; padding: 0.75rem 1rem; font-size: 1rem; background: orange; color: #fff; display: inline-block; text-align: center; width: 100%; transition: background 0.3s ease; text-decoration: none;">
+                        Sign In
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+  </div>
+</div>
+
+
+
+
+    <script src="{% static 'login/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'login/js/popper.min.js' %}"></script>
+    <script src="{% static 'login/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'login/js/main.js' %}"></script>
+  <script>
+    function password_validation() {
+        var p1 = document.getElementById("password").value;
+        var p2 = document.getElementById("confirm_password").value;
+
+        if (p1 == "") {
+            alert("Password cannot be blank");
+            return false;
+        }
+        else if (p2 == "") {
+            alert("Confirm Password cannot be blank");
+            return false;
+        }
+        else if (p1.length < 6) {
+            alert("Password must contain at least 6 characters");
+            return false;
+        }
+        else if (p1 !== p2) {
+            alert("Passwords do not match");
+            return false;
+        }
+
+        return true;
+    }
+</script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+{% if messages %}
+    {% for i in messages %}
+        {% if i.tags == "success" %}
+        <script>
+            swal("{{ i }}", "", "success");
+        </script>
+        {% elif i.tags == "error" %}
+        <script>
+            swal("{{ i }}", "", "error");
+        </script>
+        {% elif i.tags == "warning" %}
+        <script>
+            swal("{{ i }}", "", "warning");
+        </script>
+        {% else %}
+        <script>
+            swal("{{ i }}", "", "info");
+        </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+
+  </body>
+</html>

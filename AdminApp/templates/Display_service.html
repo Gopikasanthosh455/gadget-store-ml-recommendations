@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+{%extends 'index.html'%}
+{%block content%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <style>
+        /* Ensure the table container takes full width */
+        .table-container {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Ensure images fit well in table cells */
+        .table img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        /* Table customization for better full-screen view */
+        .table th, .table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        /* Adjust card to full width */
+        .card {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+                <div class="card-body">
+                  <h1 class="card-title">Service Details</h1>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Service Name</th>
+                          <th>Description</th>
+                          <th>Image</th>
+                          <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for i in data%}
+                        <tr>
+                          <td>{{i.service_Name}}</td>
+                          <td>{{i.Description}}</td>
+                            <td>
+                                <img src="{{i.ser_profile.url}}">
+                            </td>
+                            <td>
+                                <a href="{% url 'edit_service' ser_id=i.id%}">
+                                    <button class="btn btn-outline-primary">Edit</button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'delete_service' ser_id=i.id %}">
+                                    <button class="btn btn-outline-danger">Delete</button>
+                                </a>
+                            </td>
+                        </tr>
+                      {%endfor%}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+{% if messages %}
+    {% for i in messages %}
+        {% if i.tags == "success" %}
+        <script>
+            swal("{{ i }}", "", "success");
+        </script>
+        {% elif i.tags == "error" %}
+        <script>
+            swal("{{ i }}", "", "error");
+        </script>
+        {% elif i.tags == "warning" %}
+        <script>
+            swal("{{ i }}", "", "warning");
+        </script>
+        {% else %}
+        <script>
+            swal("{{ i }}", "", "info");
+        </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+</body>
+</html>
+{%endblock%}

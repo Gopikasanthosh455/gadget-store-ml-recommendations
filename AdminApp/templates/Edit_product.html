@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{%extends 'index.html'%}
+{%block content%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h3 class="card-title">Add Product</h3>
+                  <form class="forms-sample" method="post" action="{% url 'update_product' data_id=pro.id %}" enctype="multipart/form-data">
+                      {%csrf_token%}
+                  <div class="form-group mt-3">
+                      <label for="categorySelect">Select Category</label>
+                      <select class="form-control" id="categorySelect" name="category">
+                        <option>{{pro.Category_name}}</option>
+                       {%for i in cat%}
+                        <option>{{i.Category_Name}}</option>
+                          {%endfor%}
+                      </select>
+                    </div>
+                        <div class="form-group">
+                      <label >Product Name</label>
+                      <input type="text" class="form-control"  placeholder="Product Name" name="product" value="{{pro.Product_name}}">
+                    </div>
+                   <div class="form-group">
+                      <label for="exampleTextarea1">Description</label>
+                      <textarea class="form-control" id="exampleTextarea1" rows="4" name="description">{{pro.Description}}</textarea>
+                    </div>
+                        <div class="form-group">
+                      <label>Price</label>
+                      <input type="text" class="form-control"  placeholder="Price" name="price" value="{{pro.Price}}">
+                    </div>
+
+                      <div class="form-group">
+                       <label>File upload</label>
+                        <img src="{{pro.Product_image.url}}">
+                      <input type="file" name="product_profile">
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+</body>
+</html>
+{%endblock%}
