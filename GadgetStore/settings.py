@@ -25,7 +25,12 @@ SECRET_KEY = 'django-insecure-z6ha8%z&uk-thk!-_96fbb^p!8_ch@iflerxfict_q3nx67f6g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "gadget-store-ml-recommendations.onrender.com",
+    "127.0.0.1",
+    "localhost",
+]
+
 
 
 # Application definition
